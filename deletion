@@ -1,0 +1,240 @@
+
+
+
+//main menu....
+int main(){
+    char user_name[8];
+    char password[11];
+    char user_name1[7]="admin";
+    char password1[]="admin";
+    int count1=0;
+    while(1){
+    system("cls");
+    box();
+    displayLogo();
+    gotoxy(45,15);
+    printf("Enter username: ");
+    gotoxy(61,15);
+    scanf(" %[^\n]", user_name);
+    gotoxy(45,16);
+    printf("Enter password: ");
+    gotoxy(61,16);
+    scanf("%11s",&password);
+        if(strcasecmp(user_name1,user_name)==0 && strcasecmp(password1,password)==0){
+                loadingScreen();
+                system("cls");
+            gotoxy(48,12);
+            slines(22);
+            gotoxy(48,13);
+            printf("%-5c\e[1;32mACCESS GRANTED\e[0m%5c",186,186);
+            gotoxy(48,14);
+            elines(22);
+            sleep(1);
+            loadFromFile();
+            menu();
+            break;
+        }
+        else{
+                system("cls");
+                gotoxy(40,10);
+                slines(40);
+                gotoxy(40,11);
+                printf("%-5c\e[1;31m!!Invalid Username or Password!!\e[0m%5c",186,186);
+                gotoxy(40,12);
+                printf("%-12c\e[1;31mPlease Try again\e[0m%14c",186,186);
+                gotoxy(40,13);
+                elines(40);
+                count1++;
+                sleep(2);
+        }
+                if(count1==5)break;
+
+    }
+                system("cls");
+                gotoxy(33,10);
+                slines(57);
+                gotoxy(33,11);
+                printf("%-12c\e[1;31m!!Maximum login attempts exceeded!!\e[0m%12c",186,186);
+                gotoxy(33,12);
+                printf("%-2c\e[1;31m!!The application will now close for security reasons!!\e[0m%2c",186,186);
+                gotoxy(33,13);
+                elines(57);
+                sleep(1);
+                printf("\n\n\n\n\n\n\n");
+    return 0;
+}
+
+// function to add all data....
+void add_page(){
+    sleep(1);
+     int choice;
+        do {
+                        system("cls");
+            case_struct(40,40,18);
+            gotoxy(42,7);
+            Sleep(100);
+            printf("1. Add Category");
+            gotoxy(42,9);
+            Sleep(100);
+            printf("2. Add Product");
+            Sleep(100);
+            gotoxy(45,23);
+            printf("Enter \"0\" to return to the menu" );
+            gotoxy(42,20);
+            Sleep(100);
+            printf("\e[1;32mEnter your choice:\e[0m");
+            gotoxy(61,20);
+            scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: addCategory(); break;
+            case 2: addItem(); break;
+            case 0: menu(); break;
+            default:
+                 gotoxy(68,4);
+                slines(30);
+                gotoxy(68,5);
+                printf("%-9c\e[1;31mInvalid choice.\e[0m%8c",186,186);
+                gotoxy(68,6);
+                elines(30);
+        }
+    } while (choice != 10);
+}
+
+
+//function to show all data...
+void show_page(){
+        sleep(1);
+     int choice;
+        do {
+                    system("cls");
+            case_struct(40,40,18);
+            gotoxy(42,7);
+            Sleep(100);
+            printf("1. Show all Records");
+            gotoxy(42,9);
+            Sleep(100);
+            printf("2. Show Low Stock");
+            gotoxy(42,11);
+            Sleep(100);
+            printf("3. Show by Category");
+            Sleep(100);
+            gotoxy(45,23);
+            printf("Enter \"0\" to return to the menu" );
+            gotoxy(42,20);
+            Sleep(100);
+            printf("\e[1;32mEnter your choice:\e[0m");
+            gotoxy(61,20);
+            scanf("%d", &choice);
+
+
+        switch (choice) {
+            case 1: showItems(); break;
+            case 2: showlowItem(); break;
+            case 3: searchcategory(); break;
+            case 0: menu(); break;
+            default:
+                 gotoxy(68,4);
+                slines(30);
+                gotoxy(68,5);
+                printf("%-9c\e[1;31mInvalid choice.\e[0m%8c",186,186);
+                gotoxy(68,6);
+                elines(30);
+        }
+    } while (choice != 10);
+}
+
+//deletion ....
+void deletion(){
+        sleep(1);
+     int choice;
+        do {
+                        system("cls");
+            case_struct(40,40,18);
+            gotoxy(42,7);
+            Sleep(100);
+            printf("1. Remove Category");
+            gotoxy(42,9);
+            Sleep(100);
+            printf("2. Remove Product");
+            Sleep(100);
+            gotoxy(45,23);
+            printf("Enter \"0\" to return to the menu" );
+            gotoxy(42,20);
+            Sleep(100);
+            printf("\e[1;32mEnter your choice:\e[0m");
+            gotoxy(61,20);
+            scanf("%d", &choice);
+
+
+        switch (choice) {
+            case 1: removeCategory(); break;
+            case 2: deleteItem(); break;
+            case 0: menu(); break;
+            default:
+                 gotoxy(68,4);
+                slines(30);
+                gotoxy(68,5);
+                printf("%-9c\e[1;31mInvalid choice.\e[0m%8c",186,186);
+                gotoxy(68,6);
+                elines(30);
+        }
+    } while (choice != 10);
+}
+
+
+
+
+// Main menu
+void menu() {
+        system("cls");
+        sleep(1);
+    int choice;
+        case_struct(40,40,18);
+        gotoxy(42,7);
+        Sleep(100);
+        printf("1. Add Category And Products");
+        gotoxy(42,9);
+        Sleep(100);
+        printf("2. Display Products");
+        gotoxy(42,11);
+        Sleep(100);
+        printf("3. Search for Specific Product");
+        gotoxy(42,13);
+        Sleep(100);
+        printf("4. Update Product data");
+        gotoxy(42,15);
+        Sleep(100);
+        printf("5. Deletion of Category or Products");
+        gotoxy(42,17);
+        Sleep(100);
+        printf("6. Generate Weekly Report");
+        gotoxy(42,19);
+        Sleep(100);
+        printf("7. Save and Exit the Program");
+        gotoxy(42,22);
+        Sleep(100);
+        printf("\e[1;32mEnter your choice:\e[0m");
+        gotoxy(61,22);
+        scanf("%d",&choice);
+
+        while(1){
+        switch (choice) {
+            case 1: add_page(); break;
+            case 2: show_page(); break;
+            case 3: searchItem(); break;
+            case 4: updateItem(); break;
+            case 5: deletion(); break;
+            case 6: generateWeeklyReport(); break;
+            case 7: saveToFile(); generatedailyReport();printf("\n\n\n\n\n\n\n");
+exit(0); break;
+                 gotoxy(68,4);
+                slines(30);
+                gotoxy(68,5);
+                printf("%-9c\e[1;31mInvalid choice.\e[0m%8c",186,186);
+                gotoxy(68,6);
+                elines(30);
+            }
+    }
+}
+
