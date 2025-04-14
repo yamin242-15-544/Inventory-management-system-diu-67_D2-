@@ -1,0 +1,79 @@
+// function to add all data....
+void add_page(){
+    sleep(1);
+     int choice;
+        do {
+                        system("cls");
+            case_struct(40,40,18);
+            gotoxy(42,7);
+            Sleep(100);
+            printf("1. Add Category");
+            gotoxy(42,9);
+            Sleep(100);
+            printf("2. Add Product");
+            Sleep(100);
+            gotoxy(45,23);
+            printf("Enter \"0\" to return to the menu" );
+            gotoxy(42,20);
+            Sleep(100);
+            printf("\e[1;32mEnter your choice:\e[0m");
+            gotoxy(61,20);
+            scanf("%d", &choice);
+
+        switch (choice) {
+            case 1: addCategory(); break;
+            case 2: addItem(); break;
+            case 0: menu(); break;
+            default:
+                 gotoxy(68,4);
+                slines(30);
+                gotoxy(68,5);
+                printf("%-9c\e[1;31mInvalid choice.\e[0m%8c",186,186);
+                gotoxy(68,6);
+                elines(30);
+        }
+    } while (choice != 10);
+}
+
+
+//function to show all data...
+void show_page(){
+        sleep(1);
+     int choice;
+        do {
+                    system("cls");
+            case_struct(40,40,18);
+            gotoxy(42,7);
+            Sleep(100);
+            printf("1. Show all Records");
+            gotoxy(42,9);
+            Sleep(100);
+            printf("2. Show Low Stock");
+            gotoxy(42,11);
+            Sleep(100);
+            printf("3. Show by Category");
+            Sleep(100);
+            gotoxy(45,23);
+            printf("Enter \"0\" to return to the menu" );
+            gotoxy(42,20);
+            Sleep(100);
+            printf("\e[1;32mEnter your choice:\e[0m");
+            gotoxy(61,20);
+            scanf("%d", &choice);
+
+
+        switch (choice) {
+            case 1: showItems(); break;
+            case 2: showlowItem(); break;
+            case 3: searchcategory(); break;
+            case 0: menu(); break;
+            default:
+                 gotoxy(68,4);
+                slines(30);
+                gotoxy(68,5);
+                printf("%-9c\e[1;31mInvalid choice.\e[0m%8c",186,186);
+                gotoxy(68,6);
+                elines(30);
+        }
+    } while (choice != 10);
+}
