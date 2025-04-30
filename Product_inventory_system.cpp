@@ -1,3 +1,4 @@
+//the user name and password both is admin........
 #include <conio.h>
 #include <stdio.h>
 #include <stdlib.h>
